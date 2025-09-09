@@ -117,14 +117,16 @@ except Exception as e:
 ngrok_available = False
 try:
     if Config.NGROK_AUTH_TOKEN:
-        from pyngrok import ngrok, conf
+        from pyngrok import ngrok
         ngrok.set_auth_token(Config.NGROK_AUTH_TOKEN)
+        public_url = ngrok.connect(8000).public_url
+        logger.info(f"🚀 Ngrok tunnel running at: {public_url}")
         ngrok_available = True
-        logger.info("Ngrok initialized successfully")
     else:
         logger.warning("Ngrok auth token not provided, Ngrok features will be disabled")
 except Exception as e:
     logger.error(f"Failed to initialize Ngrok: {str(e)}")
+
 
 # Ensure projects directory exists
 os.makedirs(Config.PROJECTS_ROOT, exist_ok=True)
