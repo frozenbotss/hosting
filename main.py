@@ -39,7 +39,7 @@ class Config:
     else:
         DOCKER_SOCKET = os.environ.get('DOCKER_SOCKET') or 'unix://var/run/docker.sock'
     
-    NGROK_AUTH_TOKEN = os.environ.get('32SRDtFhdpCQc5dRCq3uxt9gKJp_4ZhMRojZbcD1XXXx3VAA6') or None
+    NGROK_AUTH_TOKEN = os.environ.get('NGROK_AUTH_TOKEN') or None
     
     # Subscription plans with resource limits
     PLANS = {
