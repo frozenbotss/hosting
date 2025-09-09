@@ -118,7 +118,7 @@ ngrok_available = False
 try:
     if Config.NGROK_AUTH_TOKEN:
         from pyngrok import ngrok, conf
-        conf.set_default_auth_token(Config.NGROK_AUTH_TOKEN)
+        ngrok.set_auth_token(Config.NGROK_AUTH_TOKEN)
         ngrok_available = True
         logger.info("Ngrok initialized successfully")
     else:
